@@ -1,7 +1,7 @@
 package com.yang.blog.website.service.impl;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,14 +21,14 @@ import java.util.Map;
 @Service
 public class OptionServiceImpl implements IOptionService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(OptionServiceImpl.class);
+    private static final Logger LOGGER = Logger.getLogger(OptionServiceImpl.class);
 
     @Resource
     private OptionVoMapper optionDao;
 
     @Override
     public void insertOption(OptionVo optionVo) {
-        LOGGER.debug("Enter insertOption method:optionVo={}", optionVo);
+        LOGGER.debug("Enter insertOption method:optionVo={}");
         optionDao.insertSelective(optionVo);
         LOGGER.debug("Exit insertOption method.");
     }
@@ -36,7 +36,7 @@ public class OptionServiceImpl implements IOptionService {
     @Override
     @Transactional
     public void insertOption(String name, String value) {
-        LOGGER.debug("Enter insertOption method:name={},value={}", name, value);
+        LOGGER.debug("Enter insertOption method:name={},value={}");
         OptionVo optionVo = new OptionVo();
         optionVo.setName(name);
         optionVo.setValue(value);

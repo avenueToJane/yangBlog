@@ -8,8 +8,7 @@ import com.yang.blog.website.model.Vo.CommentVoExample;
 import com.yang.blog.website.model.Vo.UserVo;
 import com.yang.blog.website.service.ICommentService;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("admin/comments")
 public class CommentController extends BaseController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(CommentController.class);
+    private static final Logger LOGGER = Logger.getLogger(CommentController.class);
 
     @Resource
     private ICommentService commentsService;

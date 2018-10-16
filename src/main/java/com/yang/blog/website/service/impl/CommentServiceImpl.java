@@ -15,8 +15,7 @@ import com.yang.blog.website.utils.DateKit;
 import com.yang.blog.website.utils.TaleUtils;
 
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,7 +28,7 @@ import java.util.List;
  */
 @Service
 public class CommentServiceImpl implements ICommentService {
-    private static final Logger LOGGER = LoggerFactory.getLogger(CommentServiceImpl.class);
+    private static final Logger LOGGER = Logger.getLogger(CommentServiceImpl.class);
 
     @Resource
     private CommentVoMapper commentDao;

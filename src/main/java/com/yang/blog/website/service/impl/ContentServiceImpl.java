@@ -18,8 +18,7 @@ import com.yang.blog.website.utils.TaleUtils;
 import com.yang.blog.website.utils.Tools;
 
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,7 +30,7 @@ import java.util.List;
  */
 @Service
 public class ContentServiceImpl implements IContentService {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ContentServiceImpl.class);
+    private static final Logger LOGGER = Logger.getLogger(ContentServiceImpl.class);
 
     @Resource
     private ContentVoMapper contentDao;

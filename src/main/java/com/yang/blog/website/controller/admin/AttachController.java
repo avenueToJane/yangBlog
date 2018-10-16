@@ -13,8 +13,7 @@ import com.yang.blog.website.service.ILogService;
 import com.yang.blog.website.utils.Commons;
 import com.yang.blog.website.utils.TaleUtils;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +36,7 @@ import java.util.List;
 @RequestMapping("admin/attach")
 public class AttachController extends BaseController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AttachController.class);
+    private static final Logger LOGGER = Logger.getLogger(AttachController.class);
 
     public static final String CLASSPATH = TaleUtils.getUploadFilePath();
 

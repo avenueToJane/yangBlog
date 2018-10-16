@@ -1,7 +1,7 @@
 package com.yang.blog.website.controller.admin;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +22,7 @@ import java.util.List;
 @RequestMapping("admin/links")
 public class LinksController extends BaseController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(LinksController.class);
+    private static final Logger LOGGER = Logger.getLogger(LinksController.class);
 
     @Resource
     private IMetaService metasService;

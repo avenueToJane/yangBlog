@@ -21,8 +21,7 @@ import com.yang.blog.website.utils.ZipUtils;
 import com.yang.blog.website.utils.backup.Backup;
 
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -38,7 +37,7 @@ import java.util.*;
 @Service
 public class SiteServiceImpl implements ISiteService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(SiteServiceImpl.class);
+    private static final Logger LOGGER = Logger.getLogger(SiteServiceImpl.class);
 
     @Resource
     private CommentVoMapper commentDao;
@@ -54,7 +53,7 @@ public class SiteServiceImpl implements ISiteService {
 
     @Override
     public List<CommentVo> recentComments(int limit) {
-        LOGGER.debug("Enter recentComments method:limit={}", limit);
+        LOGGER.debug("Enter recentComments method:limit={}");
         if (limit < 0 || limit > 10) {
             limit = 10;
         }
@@ -202,7 +201,7 @@ public class SiteServiceImpl implements ISiteService {
 
     @Override
     public List<MetaDto> metas(String type, String orderBy, int limit){
-        LOGGER.debug("Enter metas method:type={},order={},limit={}", type, orderBy, limit);
+        LOGGER.debug("Enter metas method:type={},order={},limit={}");
         List<MetaDto> retList=null;
         if (StringUtils.isNotBlank(type)) {
             if(StringUtils.isBlank(orderBy)){

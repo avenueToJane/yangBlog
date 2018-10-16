@@ -1,8 +1,7 @@
 package com.yang.blog.website.controller.admin;
 
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +29,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/admin/setting")
 public class SettingController extends BaseController {
-    private static final Logger LOGGER = LoggerFactory.getLogger(SettingController.class);
+    private static final Logger LOGGER = Logger.getLogger(SettingController.class);
 
     @Resource
     private IOptionService optionService;

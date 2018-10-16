@@ -12,8 +12,7 @@ import com.yang.blog.website.model.Vo.UserVo;
 import com.yang.blog.website.service.IContentService;
 import com.yang.blog.website.service.ILogService;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("admin/page")
 public class PageController extends BaseController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(PageController.class);
+    private static final Logger LOGGER = Logger.getLogger(PageController.class);
 
     @Resource
     private IContentService contentsService;
