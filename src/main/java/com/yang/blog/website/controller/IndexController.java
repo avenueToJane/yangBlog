@@ -293,6 +293,18 @@ public class IndexController extends BaseController {
         request.setAttribute("links", links);
         return this.render("links");
     }
+    
+    /**
+     * 归档页
+     *
+     * @return
+     */
+    @GetMapping(value = "about")
+    public String about(HttpServletRequest request) {
+        
+        return this.render("about");
+    }
+    
 
     /**
      * 自定义页面,如关于的页面

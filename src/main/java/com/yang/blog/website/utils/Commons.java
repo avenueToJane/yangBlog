@@ -4,9 +4,11 @@ package com.yang.blog.website.utils;
 import com.github.pagehelper.PageInfo;
 import com.vdurmont.emoji.EmojiParser;
 import com.yang.blog.website.constant.WebConst;
+import com.yang.blog.website.controller.admin.AuthController;
 import com.yang.blog.website.model.Vo.ContentVo;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import java.io.UnsupportedEncodingException;
@@ -24,6 +26,7 @@ import java.util.regex.Pattern;
 @Component
 public final class Commons {
 
+	private static final Logger LOGGER = Logger.getLogger(Commons.class);
     public static String THEME = "themes/default";
 
     /**
@@ -86,6 +89,7 @@ public final class Commons {
             return "";
         }
         String str = WebConst.initConfig.get(key);
+        LOGGER.info("网站配置项== "+str);
         if (StringUtils.isNotBlank(str)) {
             return str;
         } else {

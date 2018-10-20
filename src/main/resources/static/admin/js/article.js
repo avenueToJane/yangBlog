@@ -28,6 +28,8 @@ var tale = new $.tale();
  */
 function subArticle(status) {
     var title = $('#articleForm input[name=title]').val();
+ // 同步数据后可以直接取得textarea的value
+    editor.sync();//这一句参照  http://kindeditor.net/docs/usage.html第4步
     var content = $('#text').val();
     if (title == '') {
         tale.alertWarn('请输入文章标题');
