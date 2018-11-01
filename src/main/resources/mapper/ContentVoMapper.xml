@@ -86,6 +86,26 @@
   <sql id="Blob_Column_List">
     content
   </sql>
+  <select id="selectCategories" resultMap="ResultMapWithBLOBs">
+    select categories,
+ANY_VALUE(cid) cid,
+ANY_VALUE(title) title,
+ANY_VALUE(slug) slug,
+ANY_VALUE(created) created,
+ANY_VALUE(modified) modified,
+ANY_VALUE(content) content,
+ANY_VALUE(author_id) author_id,
+ANY_VALUE(type) type,
+ANY_VALUE(status) status,
+ANY_VALUE(tags) tags,
+ANY_VALUE(hits) hits,
+ANY_VALUE(comments_num) comments_num,
+ANY_VALUE(allow_comment) allow_comment,
+ANY_VALUE(allow_ping) allow_ping,
+ANY_VALUE(allow_feed) allow_feed
+
+from t_contents GROUP BY categories
+  </select>
   <select id="selectByExampleWithBLOBs" parameterType="com.yang.blog.website.model.Vo.ContentVoExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">

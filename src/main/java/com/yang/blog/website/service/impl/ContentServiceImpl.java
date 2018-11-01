@@ -224,4 +224,15 @@ public class ContentServiceImpl implements IContentService {
         metasService.saveMetas(cid, contents.getCategories(), Types.CATEGORY.getType());
         return WebConst.SUCCESS_RESULT;
     }
+
+	@Override
+	public PageInfo<ContentVo> getCategories(int i, int limit) {
+		LOGGER.debug("Enter getCategories method");  
+        PageHelper.startPage(i, limit);
+        List<ContentVo> data = contentDao.selectCategories();
+        PageInfo<ContentVo> pageInfo = new PageInfo<>(data);
+        LOGGER.debug("Exit getCategories method");
+        return pageInfo;
+		
+	}
 }

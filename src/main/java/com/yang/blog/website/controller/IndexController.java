@@ -38,6 +38,7 @@ import java.util.List;
  * Created by Administrator on 2017/3/8 008.
  */
 @Controller
+@RequestMapping("/")
 public class IndexController extends BaseController {
     private static final Logger LOGGER = Logger.getLogger(IndexController.class);
 
@@ -59,8 +60,13 @@ public class IndexController extends BaseController {
      * @return
      */
     @GetMapping(value = "/")
-    public String index(HttpServletRequest request, @RequestParam(value = "limit", defaultValue = "12") int limit) {
-        return this.index(request, 1, limit);
+    public String page(HttpServletRequest request, @RequestParam(value = "limit", defaultValue = "12") int limit) {
+    	 
+         PageInfo<ContentVo> articles = contentService.getCategories(1, limit);
+         
+         request.setAttribute("articles", articles);
+        
+        return this.render("index");
     }
 
     /**
@@ -68,7 +74,7 @@ public class IndexController extends BaseController {
      *
      * @param request request
      * @param p       第几页
-     * @param limit   每页大小
+     * @param limit   每页大小 默认12
      * @return 主页
      */
     @GetMapping(value = "page/{p}")

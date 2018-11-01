@@ -20,8 +20,25 @@
     <script src="//cdn.bootcss.com/html5shiv/r29/html5.min.js"></script>
     <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+     <style>
+  *{
+   margin: 0;
+   padding:0;
+  }
+  span.cen {
+   font-size: 30px;
+   text-align: center;
+  }
+ span {
+   color: red;
+  }
+ span.time {
+   color: black
+  }
+ </style>
 </head>
 <body  gtools_scp_screen_capture_injected="true" th:class="${is_post}?'':'bg-grey'">
+
 <!--[if lt IE 8]>
 <div class="browsehappy" role="dialog">
     当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/" target="_blank">升级你的浏览器</a>。
@@ -31,7 +48,7 @@
     <div class="navbar-container">
         <a th:href="${commons.site_url()}" class="navbar-logo">
             <img th:src="@{/user/img/logo.png}" alt="首页"/>
-        </a>
+        </a><span class="cen"><span class="time">距离2019年还有</span><span></span></span>
         <div class="navbar-menu">
             <a th:href="${commons.site_url('/archives')}">归档</a>
             <a th:href="${commons.site_url('/links')}">友链</a>  
@@ -57,5 +74,33 @@
         </div>
     </div>
 </header>
+<script>
+//<![CDATA[
+ var oSpan = document.getElementsByTagName('span')[2];
+ function tow(n) {
+  return n >= 0 && n < 10 ? '0' + n : '' + n;
+ }
+ function getDate() {
+  var oDate = new Date();//获取现在日期对象
+  var oldTime = oDate.getTime();//现在距离1970年的毫秒数
+  var newDate = new Date('2019/1/1 00:00:00');//获取指定日期对象
+  var newTime = newDate.getTime();//2018年距离1970年的毫秒数
+  var second = Math.floor((newTime - oldTime) / 1000);//未来时间距离现在的秒数
+  var day = Math.floor(second / 86400);//整数部分代表的是天；一天有24*60*60=86400秒 ；
+  second = second % 86400;//余数代表剩下的秒数；
+  var hour = Math.floor(second / 3600);//整数部分代表小时；
+  second %= 3600; //余数代表 剩下的秒数；
+  var minute = Math.floor(second / 60);
+  second %= 60;
+  var str = tow(day) + '<span class="time">天</span>'
+    + tow(hour) + '<span class="time">小时</span>'
+    + tow(minute) + '<span class="time">分钟</span>'
+    + tow(second) + '<span class="time">秒</span>';
+  oSpan.innerHTML = str;
+ }
+ getDate();
+ setInterval(getDate, 1000);
+ //]]>
+</script>
 </body>
 </html>

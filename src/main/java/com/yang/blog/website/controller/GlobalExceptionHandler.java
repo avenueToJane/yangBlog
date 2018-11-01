@@ -10,7 +10,7 @@ import com.yang.blog.website.exception.TipException;
 /**
  * Created by BlueT on 2017/3/4.
  */
-@ControllerAdvice
+//@ControllerAdvice
 public class GlobalExceptionHandler {
     private static final Logger LOGGER = Logger.getLogger(GlobalExceptionHandler.class);
 

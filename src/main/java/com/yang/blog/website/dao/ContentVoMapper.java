@@ -41,4 +41,6 @@ public interface ContentVoMapper {
     List<ArchiveBo> findReturnArchiveBo();
 
     List<ContentVo> findByCatalog(Integer mid);
+
+	List<ContentVo> selectCategories();
 }

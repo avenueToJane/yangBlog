@@ -89,5 +89,12 @@ public interface IContentService {
      * @param ordinal
      * @param newCatefory
      */
-    void updateCategory(String ordinal,String newCatefory);
+    void updateCategory(String ordinal,String newCatefory); 
+    /**
+     * 获取分类列表
+     * @param i
+     * @param limit
+     * @return
+     */
+	PageInfo<ContentVo> getCategories(int i, int limit);
 }
