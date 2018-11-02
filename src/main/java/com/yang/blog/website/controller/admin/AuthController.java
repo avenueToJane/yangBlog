@@ -44,7 +44,15 @@ public class AuthController extends BaseController {
     public String login() {
         return "admin/login";
     }
-
+   /**
+    * 登陆界面
+    * @param username
+    * @param password
+    * @param remeber_me
+    * @param request
+    * @param response
+    * @return
+    */
     @PostMapping(value = "login")
     @ResponseBody
     public RestResponseBo doLogin(@RequestParam String username,
