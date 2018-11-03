@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yang.blog.website.dao.SummaryVoMapper">
+  <resultMap id="BaseResultMap" type="com.yang.blog.website.model.Vo.SummaryVo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    <result column="createTime" jdbcType="VARCHAR" property="createTime" /> 
+  </resultMap>
+  
+   <select id="selectSummarys" resultMap="BaseResultMap">
+    select * from t_summary
+  </select>
+  
+  <insert id="addSummary"  parameterType="com.yang.blog.website.model.Vo.SummaryVo">
+   insert into t_summary(title,content,createTime)
+               values (#{title,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}, 
+               #{createTime,jdbcType=VARCHAR})
+  </insert>
+  
+  <delete id="deleteSummaryById" parameterType="com.yang.blog.website.model.Vo.SummaryVo">
+  
+  delete from t_summary where id=#{id}
+  
+  </delete>
+  
+  <select id="detail" parameterType="com.yang.blog.website.model.Vo.SummaryVo" resultMap="BaseResultMap">
+  select * from t_summary where id=#{id}
+  </select>
+  
+  <update id="editSummary" parameterType="com.yang.blog.website.model.Vo.SummaryVo" >
+  
+  update t_summary set title=#{title},content=#{content},createTime=#{createTime} where id=#{id}
+  
+  </update>
+  
+  
+  
+</mapper>

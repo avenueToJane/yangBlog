@@ -12,10 +12,12 @@ import com.yang.blog.website.model.Bo.RestResponseBo;
 import com.yang.blog.website.model.Vo.CommentVo;
 import com.yang.blog.website.model.Vo.ContentVo;
 import com.yang.blog.website.model.Vo.MetaVo;
+import com.yang.blog.website.model.Vo.SummaryVo;
 import com.yang.blog.website.service.ICommentService;
 import com.yang.blog.website.service.IContentService;
 import com.yang.blog.website.service.IMetaService;
 import com.yang.blog.website.service.ISiteService;
+import com.yang.blog.website.service.ISummaryService;
 import com.yang.blog.website.utils.IPKit;
 import com.yang.blog.website.utils.PatternKit;
 import com.yang.blog.website.utils.TaleUtils;
@@ -23,6 +25,7 @@ import com.yang.blog.website.utils.TaleUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -53,6 +56,9 @@ public class IndexController extends BaseController {
 
     @Resource
     private ISiteService siteService;
+    
+    @Resource
+    private ISummaryService summaryService;
 
     /**
      * 首页
@@ -67,6 +73,17 @@ public class IndexController extends BaseController {
          request.setAttribute("articles", articles);
         
         return this.render("index");
+    }
+    //纪要事件
+    @GetMapping (value = "/summary")
+    public String summary(HttpServletRequest request,ModelMap model, @RequestParam(value = "limit", defaultValue = "12") int limit) {
+    	 
+    	List<SummaryVo> Summarylist =summaryService.selectSummarys();   
+        LOGGER.info("纪要事件："+Summarylist.size());
+        request.setAttribute("list", Summarylist);
+    	//model.addAttribute("list", Summarylist);
+        LOGGER.info("纪要事件："+Summarylist);
+        return this.render("summary");
     }
 
     /**
