@@ -13,8 +13,20 @@ public class ContentVoExample {
     private Integer limit;
 
     private Integer offset;
+    
+    private String ext;//扩展参数
+    
+    
 
-    public ContentVoExample() {
+    public String getExt() {
+		return ext;
+	}
+
+	public void setExt(String ext) {
+		this.ext = ext;
+	}
+
+	public ContentVoExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

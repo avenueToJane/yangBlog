@@ -46,13 +46,16 @@ public class ArticleController extends BaseController {
     private ILogService logService;
 
     @GetMapping(value = "")
-    public String index(@RequestParam(value = "page", defaultValue = "1") int page,
-                        @RequestParam(value = "limit", defaultValue = "15") int limit, HttpServletRequest request) {
-        ContentVoExample contentVoExample = new ContentVoExample();
+    public String index(@RequestParam(value = "page", defaultValue = "1") int page,	             
+                        @RequestParam(value = "limit", defaultValue = "7") int limit, HttpServletRequest request) {
+        String title=request.getParameter("title");
+    	ContentVoExample contentVoExample = new ContentVoExample();
         contentVoExample.setOrderByClause("created desc");
         contentVoExample.createCriteria().andTypeEqualTo(Types.ARTICLE.getType());
+        contentVoExample.setExt(title);
         PageInfo<ContentVo> contentsPaginator = contentsService.getArticlesWithpage(contentVoExample, page, limit);
         request.setAttribute("articles", contentsPaginator);
+        request.setAttribute("ti", title);
         return "admin/article_list";
     }
 

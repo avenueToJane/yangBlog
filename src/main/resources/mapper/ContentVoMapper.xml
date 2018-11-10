@@ -111,16 +111,20 @@ from t_contents GROUP BY categories
     <if test="distinct">
       distinct
     </if>
-    <include refid="Base_Column_List" />
+     cid, title, slug, created, modified, author_id, type, status, tags, categories, hits, 
+    comments_num, allow_comment, allow_ping, allow_feed
     ,
     <include refid="Blob_Column_List" />
     from t_contents
+
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
+      and title LIKE '%${ext}%' 
     </if>
     <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
+   
   </select>
   <select id="selectByExample" parameterType="com.yang.blog.website.model.Vo.ContentVoExample" resultMap="BaseResultMap">
     select

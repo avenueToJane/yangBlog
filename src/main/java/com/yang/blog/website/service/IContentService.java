@@ -68,6 +68,7 @@ public interface IContentService {
      * @param commentVoExample
      * @param page
      * @param limit
+     * @param title 
      * @return
      */
     PageInfo<ContentVo> getArticlesWithpage(ContentVoExample commentVoExample, Integer page, Integer limit);
